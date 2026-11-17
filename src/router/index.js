@@ -9,8 +9,10 @@ const routes = [
   { path: "/", name: "orders", component: OrdersView },
   // 4. Route detail (dynamic route)
   { path: "/orders/:id", name: "order-detail", component: OrderDetailView },
-  // 5. Catch-all: semua URL yang tidak cocok diarahkan ke daftar
-  { path: "/:pathMatch(.*)*", redirect: { name: "orders" } },
+  // 5. Catch-all: semua URL yang tidak cocok diarahkan ke daftar.
+  //    params: {} supaya param 'pathMatch' tidak ikut terbawa ke route 'orders'
+  //    (kalau tidak, vue-router menampilkan warning "Discarded invalid param(s)")
+  { path: "/:pathMatch(.*)*", redirect: { name: "orders", params: {} } },
 ];
 
 // 6. Buat router dengan history dan routes di atas

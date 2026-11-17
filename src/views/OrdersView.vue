@@ -2,7 +2,7 @@
 import { ref, computed } from "vue";
 // 1. Import fungsi untuk mengambil instance router dari vue-router
 import { useRouter } from "vue-router";
-import { orders } from "../data/order";
+import { orders } from "../data/orders";
 import OrderToolbar from "../components/OrderToolbar.vue";
 import OrderRow from "../components/OrderRow.vue";
 
@@ -43,8 +43,8 @@ function handleAdd() {
     <OrderToolbar
       :search="search"
       :status="statusFilter"
-      @ubah-search="search = $event"
-      @ubah-status="statusFilter = $event"
+      @update:search="search = $event"
+      @update:status="statusFilter = $event"
       @add="handleAdd"
     />
 

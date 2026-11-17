@@ -11,7 +11,7 @@ const props = defineProps({
   },
 });
 // 2. Deklarasikan tiga event: 'update:search', 'update:status', 'add'
-const emit = defineEmits(["ubahSearch", "ubahStatus", "add"]);
+const emit = defineEmits(["update:search", "update:status", "add"]);
 </script>
 
 <template>
@@ -20,8 +20,9 @@ const emit = defineEmits(["ubahSearch", "ubahStatus", "add"]);
             nilai tampil dari prop search; setiap diketik, emit 'update:search' dengan teks terbaru -->
     <input
       :value="props.search"
-      @input="emit('ubahSearch', $event.target.value)"
+      @input="emit('update:search', $event.target.value)"
       placeholder="Cari nama pelanggan..."
+      aria-label="Cari nama pelanggan"
       class="min-w-0 flex-1 rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm"
     />
 
@@ -29,7 +30,8 @@ const emit = defineEmits(["ubahSearch", "ubahStatus", "add"]);
             nilai tampil dari prop status; saat berubah, emit 'update:status' -->
     <select
       :value="props.status"
-      @change="emit('ubahStatus', $event.target.value)"
+      @change="emit('update:status', $event.target.value)"
+      aria-label="Filter status pesanan"
       class="rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm"
     >
       <option value="Semua">Semua</option>

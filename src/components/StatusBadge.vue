@@ -26,6 +26,6 @@ const badgeClass = computed(() => {
     :class="badgeClass"
     class="rounded-full px-3 py-1 text-xs font-semibold"
   >
-    {{ status }}</span
-  >
+    {{ props.status }}
+  </span>
 </template>
